@@ -22,13 +22,13 @@ class TestCase(unittest.TestCase):
     '''
 
     def setUp(self):
-        trytond.tests.test_tryton.install_module('<module>')
+        trytond.tests.test_tryton.install_module('sale_opportunity_quote')
 
     def test0005views(self):
         '''
         Test views.
         '''
-        test_view('<module>')
+        test_view('sale_opportunity_quote')
 
     def test0006depends(self):
         '''
