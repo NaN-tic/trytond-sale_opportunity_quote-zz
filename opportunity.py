@@ -3,7 +3,7 @@
 # copyright notices and license terms.
 
 from trytond.model import fields
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 
 __metaclass__ = PoolMeta
 
@@ -14,6 +14,13 @@ class SaleOpportunity:
     __name__ = 'sale.opportunity'
 
     quotes = fields.One2Many('sale.sale', 'opportunity', 'Sales')
+
+    def create_sale(self):
+        Sale = Pool().get('sale.sale')
+
+        sale = super(SaleOpportunity, self).create_sale()
+        Sale.write([sale], {'opportunity': self.id})
+        return sale
 
 
 class Sale:
