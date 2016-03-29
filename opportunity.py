@@ -5,12 +5,12 @@
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 
-__metaclass__ = PoolMeta
 
 __all__ = ['SaleOpportunity', 'Sale']
 
 
 class SaleOpportunity:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.opportunity'
 
     quotes = fields.One2Many('sale.sale', 'opportunity', 'Sales')
@@ -24,6 +24,7 @@ class SaleOpportunity:
 
 
 class Sale:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.sale'
 
     opportunity = fields.Many2One('sale.opportunity', 'Opportunity')
